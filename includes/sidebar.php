@@ -23,6 +23,11 @@ $currentPage = basename($_SERVER['PHP_SELF']);
             <i class="bi bi-grid-1x2-fill"></i>
             <span>Dashboard</span>
         </a>
+        <a href="customer.php" class="nav-link <?php echo $currentPage == 'customer.php' ? 'active' : ''; ?>">
+            <i class="bi bi-phone-fill text-warning"></i>
+            <span>Mode Customer</span>
+            <span class="badge bg-warning text-dark ms-auto" style="font-size: 0.65rem; font-weight: 700;">Self-Order</span>
+        </a>
         <a href="pos.php" class="nav-link <?php echo $currentPage == 'pos.php' ? 'active' : ''; ?>">
             <i class="bi bi-calculator-fill"></i>
             <span>Point of Sale (POS)</span>

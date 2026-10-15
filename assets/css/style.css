@@ -712,3 +712,162 @@ body {
         padding: 0;
     }
 }
+
+/* ==========================================================================
+   Dark Theme Tokens & Overrides
+   ========================================================================== */
+[data-theme="dark"] {
+    --primary: #9B7059;
+    --primary-dark: #120B08;
+    --primary-light: #B8856C;
+    --accent: #E5B285;
+    --accent-light: #3D2C20;
+    --accent-hover: #D4A373;
+    --cream: #14100E;
+    --surface: #1E1714;
+    --surface-hover: #291F1A;
+    --border-color: #382A24;
+    --border-light: #2A1E18;
+    --text-primary: #F7EFE9;
+    --text-secondary: #C7B5A7;
+    --text-muted: #8E7D73;
+}
+
+[data-theme="dark"] body {
+    background-color: var(--cream);
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .app-header {
+    background: rgba(30, 23, 20, 0.92);
+    border-bottom-color: var(--border-color);
+}
+
+[data-theme="dark"] .card {
+    background-color: var(--surface);
+    border-color: var(--border-color);
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .card-header {
+    background-color: var(--surface-hover);
+    border-bottom-color: var(--border-color);
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .card-footer {
+    background-color: var(--surface-hover);
+    border-top-color: var(--border-color);
+}
+
+[data-theme="dark"] .table {
+    --bs-table-bg: var(--surface);
+    --bs-table-color: var(--text-primary);
+    --bs-table-border-color: var(--border-color);
+    --bs-table-hover-bg: var(--surface-hover);
+    --bs-table-hover-color: var(--text-primary);
+}
+
+[data-theme="dark"] .table thead th {
+    background-color: var(--surface-hover);
+    color: var(--accent);
+    border-bottom-color: var(--border-color);
+}
+
+[data-theme="dark"] .form-control,
+[data-theme="dark"] .form-select {
+    background-color: var(--surface);
+    border-color: var(--border-color);
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .form-control:focus,
+[data-theme="dark"] .form-select:focus {
+    background-color: #241B17;
+    border-color: var(--accent);
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .input-group-text {
+    background-color: var(--surface-hover);
+    border-color: var(--border-color);
+    color: var(--text-secondary);
+}
+
+[data-theme="dark"] .modal-content {
+    background-color: var(--surface);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+}
+
+[data-theme="dark"] .modal-header,
+[data-theme="dark"] .modal-footer {
+    background-color: var(--surface-hover) !important;
+    border-color: var(--border-color) !important;
+}
+
+[data-theme="dark"] .list-group-item {
+    background-color: var(--surface);
+    color: var(--text-primary);
+    border-color: var(--border-color);
+}
+
+[data-theme="dark"] .list-group-item-action:hover {
+    background-color: var(--surface-hover);
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .bg-light {
+    background-color: var(--surface-hover) !important;
+}
+
+[data-theme="dark"] .bg-cream {
+    background-color: #241A15 !important;
+}
+
+[data-theme="dark"] .badge-soft-primary {
+    background: rgba(148, 105, 84, 0.25);
+    color: #E5B285;
+}
+
+[data-theme="dark"] .outlet-badge {
+    background-color: var(--surface);
+    border-color: var(--border-color);
+}
+
+[data-theme="dark"] .outlet-badge select {
+    color: var(--text-primary);
+}
+
+/* Smooth Transitions for Theme */
+body, .app-header, .card, .table, .modal-content {
+    transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+
+/* Command Palette Spotlight Styling */
+#commandPaletteModal .modal-content {
+    border-radius: var(--radius-lg);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+    overflow: hidden;
+}
+
+#cmdPaletteResults .list-group-item {
+    transition: all 0.15s ease-in-out;
+}
+
+#cmdPaletteResults .list-group-item:hover {
+    transform: translateX(4px);
+    background-color: rgba(212, 163, 115, 0.12);
+}
+
+/* Micro-animations */
+@keyframes pulseGlow {
+    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(217, 119, 6, 0.4); }
+    70% { transform: scale(1.03); box-shadow: 0 0 0 10px rgba(217, 119, 6, 0); }
+    100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(217, 119, 6, 0); }
+}
+
+.pulse-glow {
+    animation: pulseGlow 2s infinite;
+}
+

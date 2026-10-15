@@ -88,6 +88,68 @@ function getAllOutlets() {
 }
 
 /**
+ * Current user profile and role management
+ */
+function getCurrentUser() {
+    if (isset($_SESSION['user_profile']) && !empty($_SESSION['user_profile']['name'])) {
+        return $_SESSION['user_profile'];
+    }
+
+    $managerName = getAppSetting('manager_name', 'Kevin Wijaya');
+    $managerRole = getAppSetting('manager_role', 'Store Manager');
+    $activeRole = $_SESSION['active_role'] ?? 'manager';
+
+    $initials = '';
+    $parts = explode(' ', trim($managerName));
+    foreach ($parts as $p) {
+        if (!empty($p)) $initials .= strtoupper(substr($p, 0, 1));
+        if (strlen($initials) >= 2) break;
+    }
+    if (empty($initials)) $initials = 'KW';
+
+    $user = [
+        'name' => $managerName,
+        'role' => $managerRole,
+        'initials' => $initials,
+        'active_role' => $activeRole
+    ];
+
+    $_SESSION['user_profile'] = $user;
+    return $user;
+}
+
+function setCurrentUser($name, $role, $activeRole = 'manager') {
+    $initials = '';
+    $parts = explode(' ', trim($name));
+    foreach ($parts as $p) {
+        if (!empty($p)) $initials .= strtoupper(substr($p, 0, 1));
+        if (strlen($initials) >= 2) break;
+    }
+    if (empty($initials)) $initials = 'KW';
+
+    $user = [
+        'name' => $name,
+        'role' => $role,
+        'initials' => $initials,
+        'active_role' => $activeRole
+    ];
+
+    $_SESSION['user_profile'] = $user;
+    $_SESSION['active_role'] = $activeRole;
+
+    try {
+        $db = getDb();
+        $stmt = $db->prepare("INSERT OR REPLACE INTO app_settings (key_name, val_text) VALUES (?, ?)");
+        $stmt->execute(['manager_name', $name]);
+        $stmt->execute(['manager_role', $role]);
+    } catch (Exception $e) {
+        // Ignored if table not ready
+    }
+
+    return $user;
+}
+
+/**
  * Count raw materials below minimum safety stock
  */
 function getLowStockCount($outletId = null) {
