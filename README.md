@@ -96,3 +96,4 @@ Nyalakan Apache di XAMPP Control Panel, lalu buka di browser:
 * **Member Loyalitas**: Poin belanja pelanggan dan diskon berjenjang (Gold 10%, Silver 5%).
 * **Multi-Cabang (Outlets)**: Pengelolaan banyak kedai dengan pergantian cabang instan.
 * **Pengaturan & Backup**: Konfigurasi nama kedai, format struk printer kasir, dan backup database 1-klik.
+# Kopikita---erp
